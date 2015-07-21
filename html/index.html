@@ -1,0 +1,26 @@
+<html>
+<head>
+<title>Fireworks demo</title>
+</head>
+<body>
+<h1>Fireworks</h1>
+<ul id="fireworks">
+</ul>
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script>
+$(document).ready(function() {
+        $.ajax({
+            url: 'https://fireworks.apispark.net/v1/fireworks'
+        }).done(function(data) {
+            data.forEach(function(event) {
+                $('#fireworks').append(
+                    '<li>' + 
+                        event.city + ', ' + event.state + ' -- ' +
+                        event.date + ' at ' + event.time +
+                    '</li>');
+            });
+        });
+});
+</script>
+</body>
+</html>
